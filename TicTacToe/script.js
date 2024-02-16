@@ -17,9 +17,9 @@ function cpuStart() {
   document.getElementById("g" + index).innerHTML = "O";
 
   if (isWin(grid)) {
-    document.getElementById("result").innerHTML = "Computer Wins! Refresh to restart";
+    document.getElementById("result").innerHTML = "Computer Wins!";
   } else if (isDraw(grid)) {
-    document.getElementById("result").innerHTML = "Draw! Refresh to restart";
+    document.getElementById("result").innerHTML = "Draw!";
   }
 
   playerTurn = true;
@@ -34,10 +34,10 @@ function clickGrid(index) {
   playerTurn = false;
 
   if (isWin(grid)) {
-    document.getElementById("result").innerHTML = "Player Wins! Refresh to restart";
+    document.getElementById("result").innerHTML = "Player Wins!";
     return;
   } else if (isDraw(grid)) {
-    document.getElementById("result").innerHTML = "Draw! Refresh to restart";
+    document.getElementById("result").innerHTML = "Draw!";
     return;
   }
 
@@ -52,10 +52,10 @@ function clickGrid(index) {
   document.getElementById("g" + index).innerHTML = "O";
 
   if (isWin(grid)) {
-    document.getElementById("result").innerHTML = "Computer Wins! Refresh to restart";
+    document.getElementById("result").innerHTML = "Computer Wins!";
     return;
   } else if (isDraw(grid)) {
-    document.getElementById("result").innerHTML = "Draw! Refresh to restart";
+    document.getElementById("result").innerHTML = "Draw!";
     return;
   }
 
@@ -123,4 +123,8 @@ function findBestMove(grid, myTurn = 1) {
   if (draws.length > 0) return [0, draws[0]];
 
   return [-myTurn, grid.indexOf(0)];
+}
+
+function restart_game() {
+  location.reload();
 }
