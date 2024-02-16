@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TicTacToe</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+        <script src="script.js"></script>
+        <h1>Current Game</h1>
+        <table>
+          <tr>
+            <td class="grid" id="g0"><button onclick="clickGrid(0)"></button></td>
+            <td class="grid" id="g1"><button onclick="clickGrid(1)"></button></td>
+            <td class="grid" id="g2"><button onclick="clickGrid(2)"></button></td>
+          </tr>
+          <tr>
+            <td class="grid" id="g3"><button onclick="clickGrid(3)"></button></td>
+            <td class="grid" id="g4"><button onclick="clickGrid(4)"></button></td>
+            <td class="grid" id="g5"><button onclick="clickGrid(5)"></button></td>
+          </tr>
+          <tr>
+            <td class="grid" id="g6"><button onclick="clickGrid(6)"></button></td>
+            <td class="grid" id="g7"><button onclick="clickGrid(7)"></button></td>
+            <td class="grid" id="g8"><button onclick="clickGrid(8)"></button></td>
+          </tr>
+        </table>
+
+        <div id="cpustart"><button onclick="cpuStart()">CPU Start</button></div>
+
+        <h1 id="result"></h1>
+
+        <h2 id="prediction"></h2>
+  </body>
