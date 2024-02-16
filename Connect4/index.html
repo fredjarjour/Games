@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Connect 4</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+	<script src="script.js"></script>
+	<a href="../HomePage/index.html">Back to Games</a>
+	<h1>Current Game</h1>
+	<table>
+	  <tr>
+	    <td class="grid" id="g0" onclick="clickGrid(0)"></td>
+	    <td class="grid" id="g1" onclick="clickGrid(1)"></td>
+	    <td class="grid" id="g2" onclick="clickGrid(2)"></td>
+		<td class="grid" id="g3" onclick="clickGrid(3)"></td>
+		<td class="grid" id="g4" onclick="clickGrid(4)"></td>
+		<td class="grid" id="g5" onclick="clickGrid(5)"></td>
+		<td class="grid" id="g6" onclick="clickGrid(6)"></td>
+	  </tr>
+	  <tr>
+	    <td class="grid" id="g7" onclick="clickGrid(0)"></td>
+	    <td class="grid" id="g8" onclick="clickGrid(1)"></td>
+	    <td class="grid" id="g9" onclick="clickGrid(2)"></td>
+		<td class="grid" id="g10" onclick="clickGrid(3)"></td>
+		<td class="grid" id="g11" onclick="clickGrid(4)"></td>
+		<td class="grid" id="g12" onclick="clickGrid(5)"></td>
+		<td class="grid" id="g13" onclick="clickGrid(6)"></td>
+	  </tr>
+	  <tr>
+	    <td class="grid" id="g14" onclick="clickGrid(0)"></td>
+	    <td class="grid" id="g15" onclick="clickGrid(1)"></td>
+	    <td class="grid" id="g16" onclick="clickGrid(2)"></td>
+		<td class="grid" id="g17" onclick="clickGrid(3)"></td>
+		<td class="grid" id="g18" onclick="clickGrid(4)"></td>
+		<td class="grid" id="g19" onclick="clickGrid(5)"></td>
+		<td class="grid" id="g20" onclick="clickGrid(6)"></td>
+	  </tr>
+	  <tr>
+	    <td class="grid" id="g21" onclick="clickGrid(0)"></td>
+	    <td class="grid" id="g22" onclick="clickGrid(1)"></td>
+	    <td class="grid" id="g23" onclick="clickGrid(2)"></td>
+		<td class="grid" id="g24" onclick="clickGrid(3)"></td>
+		<td class="grid" id="g25" onclick="clickGrid(4)"></td>
+		<td class="grid" id="g26" onclick="clickGrid(5)"></td>
+		<td class="grid" id="g27" onclick="clickGrid(6)"></td>
+	  </tr>
+	  <tr>
+	    <td class="grid" id="g28" onclick="clickGrid(0)"></td>
+	    <td class="grid" id="g29" onclick="clickGrid(1)"></td>
+	    <td class="grid" id="g30" onclick="clickGrid(2)"></td>
+		<td class="grid" id="g31" onclick="clickGrid(3)"></td>
+		<td class="grid" id="g32" onclick="clickGrid(4)"></td>
+		<td class="grid" id="g33" onclick="clickGrid(5)"></td>
+		<td class="grid" id="g34" onclick="clickGrid(6)"></td>
+	  </tr>
+	  <tr>
+	    <td class="grid" id="g35" onclick="clickGrid(0)"></td>
+	    <td class="grid" id="g36" onclick="clickGrid(1)"></td>
+	    <td class="grid" id="g37" onclick="clickGrid(2)"></td>
+		<td class="grid" id="g38" onclick="clickGrid(3)"></td>
+		<td class="grid" id="g39" onclick="clickGrid(4)"></td>
+		<td class="grid" id="g40" onclick="clickGrid(5)"></td>
+		<td class="grid" id="g41" onclick="clickGrid(6)"></td>
+	  </tr>
+	</table>
+
+	<h1 id="result"></h1>
+
+	<h2 id="prediction"></h2>
+
+	<label for="depth">Depth (between 1 and 10):</label>
+	<input type="number" id="depth" name="depth" min="1" max="10" value="5" oninput="changeDepth()">
+	
+	<br>Always Max Depth: <input type="checkbox" id="maxDepth" name="maxDepth" onclick="clickMaxDepth()">
+
+	<button id="reset" class="utilButton" onclick="reset()">Play Again</button>
+  </body>
+</html>

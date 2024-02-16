@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2048</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+	<script src="script.js"></script>
+	<a href="../HomePage/index.html">Back to Games</a>
+	<h1>Current Game</h1>
+	<h2 id="score">Score: 0</h2>
+	<h2 id="loss"></h2>
+    <table>
+	  <tr>
+	    <td id="g00"></td>
+	    <td id="g01"></td>
+	    <td id="g02"></td>
+		<td id="g03"></td>
+	  </tr>
+	  <tr>
+	    <td id="g10"></td>
+	    <td id="g11"></td>
+	    <td id="g12"></td>
+		<td id="g13"></td>
+	  </tr>
+	  <tr>
+	    <td id="g20"></td>
+	    <td id="g21"></td>
+	    <td id="g22"></td>
+		<td id="g23"></td>
+	  </tr>
+	  <tr>
+	    <td id="g30"></td>
+	    <td id="g31"></td>
+	    <td id="g32"></td>
+		<td id="g33"></td>
+	</table>
+
+    <button id="start_btn" onclick="start_game()">Start Game</button>
+    <button id="cpu_btn" onclick="play_game()">CPU Game</button>
+    <br>
+	<h3 class="speed">Speed of CPU (ms)</h3>
+	<input class="speed" type="number" id="speed" name="speed" min="10" max="1000" value="100" step="10">
+	<br><br>
+    <button class="controls" onclick="move(0)">Left</button>
+    <button class="controls" onclick="move(1)">Right</button>
+    <button class="controls" onclick="move(2)">Up</button>
+    <button class="controls" onclick="move(3)">Down</button>
+    <br><br><br><button onclick="restart_game()">Restart</button>
+</body>
+</html>

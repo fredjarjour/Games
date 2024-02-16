@@ -1,0 +1,60 @@
+td {
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 2em;
+}
+
+.value2 {
+    background-color: #eee4da;
+}
+
+.value4 {
+    background-color: #ede0c8;
+}
+
+.value8 {
+    background-color: #f2b179;
+}
+
+.value16 {
+    background-color: #f59563;
+}
+
+.value32 {
+    background-color: #f67c60;
+}
+
+.value64 {
+    background-color: #f65e3b;
+}
+
+.value128 {
+    background-color: #edcf73;
+}
+
+.value256 {
+    background-color: #edcc62;
+}
+
+.value512 {
+    background-color: #edc850;
+}
+
+.value1024 {
+    background-color: #edc53f;
+}
+
+.value2048 {
+    background-color: #edc22d;
+}
+
+.value4096 {
+    background-color: #5eda92;
+}
+
+.valuemore {
+    background-color: #3c3a32;
+}
