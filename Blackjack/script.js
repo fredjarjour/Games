@@ -1,4 +1,5 @@
-const cards = [1,2,3,4,5,6,7,8,9,10,10,10,10];
+const cards_value =   [ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 10, 10, 10];
+const cards_display = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
 
 let player_cards = [];
 let dealer_cards = [];
@@ -6,18 +7,17 @@ let dealer_cards = [];
 let balance = 100;
 
 function draw_card() {
-  return cards[Math.floor(Math.random() * cards.length)];
+  return Math.floor(Math.random() * cards_value.length);
 }
 
 function display_hand(hand) {
-  let sum = 0;
+  let sum = calculate_hand(hand);
   let ace = false;
 
   for (let i = 0; i < hand.length; i++) {
-    if (hand[i] === 1) {
+    if (cards_display[hand[i]] === "A") {
       ace = true;
     }
-    sum += hand[i];
   }
 
   if (sum == 21) {
@@ -36,10 +36,10 @@ function calculate_hand(hand) {
   let ace = false;
 
   for (let i = 0; i < hand.length; i++) {
-    if (hand[i] === 1) {
+    if (cards_display[hand[i]] === "A") {
       ace = true;
     }
-    sum += hand[i];
+    sum += cards_value[hand[i]];
   }
 
   if (ace && sum + 10 <= 21) {
@@ -79,10 +79,10 @@ function deal_cards() {
   dealer_hand.innerHTML = "";
 
   for (let i = 0; i < player_cards.length; i++) {
-    player_hand.innerHTML += `<p>${player_cards[i]}</p>`;
+    player_hand.innerHTML += `<p>${cards_display[player_cards[i]]}</p>`;
   }
 
-  dealer_hand.innerHTML += `<p>${dealer_cards[0]}</p>`;
+  dealer_hand.innerHTML += `<p>${cards_display[dealer_cards[0]]}</p>`;
   dealer_hand.innerHTML += `<p>?</p>`;
 
   player_text.innerHTML = `Player: ${display_hand(player_cards)}`;
@@ -100,7 +100,7 @@ function hit() {
   const player_text = document.getElementById('player');
 
   player_cards.push(draw_card());
-  player_hand.innerHTML += `<p>${player_cards[player_cards.length - 1]}</p>`;
+  player_hand.innerHTML += `<p>${cards_display[player_cards[player_cards.length - 1]]}</p>`;
   player_text.innerHTML = `Player: ${display_hand(player_cards)}`;
 
   if (calculate_hand(player_cards) > 21) {
@@ -120,14 +120,14 @@ function stand() {
   dealer_hand.innerHTML = "";
 
   for (let i = 0; i < dealer_cards.length; i++) {
-    dealer_hand.innerHTML += `<p>${dealer_cards[i]}</p>`;
+    dealer_hand.innerHTML += `<p>${cards_display[dealer_cards[i]]}</p>`;
   }
 
   dealer_text.innerHTML = `Dealer: ${display_hand(dealer_cards)}`;
 
   while (calculate_hand(dealer_cards) < 17) {
     dealer_cards.push(draw_card());
-    dealer_hand.innerHTML += `<p>${dealer_cards[dealer_cards.length - 1]}</p>`;
+    dealer_hand.innerHTML += `<p>${cards_display[dealer_cards[dealer_cards.length - 1]]}</p>`;
     dealer_text.innerHTML = `Dealer: ${display_hand(dealer_cards)}`;
   }
 
