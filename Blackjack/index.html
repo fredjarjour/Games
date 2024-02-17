@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <script src="script.js"></script>
+    <a href="../index.html">Back to Games</a>
+    <h1>Blackjack</h1>
+    
+    <h2 id="balance">Balance: 100$</h2>
+
+    <h3 id="dealer">Dealer</h3>
+    <div id="dealer-hand"></div>
+
+    <h3 id="player">Player</h3>
+    <div id="player-hand"></div>
+
+    <h3 id="bet-amount">Bet Amount:</h3>
+    <input type="number" id="bet" placeholder="Enter Bet Amount" value="10" min="1" max="100">
+
+    <br>
+    <br>
+    <button onclick="hit()" id="hit-button" style="display:none">Hit</button>
+    <button onclick="stand()" id="stand-button" style="display: none;">Stand</button>
+
+    <button onclick="deal_cards()" id="deal-button">Deal Cards</button>
+
+    <button onclick="next_hand()" id="next-hand-button" style="display: none;">Next Hand</button>
+
+    <br><br><br><br>
+    <button onclick="restart_game()">Reset Game</button>
+  </body>
