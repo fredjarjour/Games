@@ -6,6 +6,72 @@ let dealer_cards = [];
 
 let balance = 100;
 
+
+function is_soft_hand(hand) {
+  if (!hand.includes(0)) {
+    return false;
+  }
+  
+  let new_hand = hand.slice();
+  new_hand.splice(new_hand.indexOf(0), 1);
+  return calculate_hand(new_hand) <= 10;
+}
+
+function get_cpu_decision(player_hand, dealer_hand) {
+  let dealer_card = cards_value[dealer_hand[0]];
+  let player_sum = calculate_hand(player_hand);
+
+  if (player_sum < 12) {
+    return "Hit";
+  }
+
+  if (player_sum > 17) {
+    return "Stand";
+  }
+
+  // Soft hand
+  if (is_soft_hand(player_hand)) {
+    if (player_sum <= 17) {
+      return "Hit";
+    }
+
+    if (player_sum >= 19) {
+      return "Stand";
+    }
+
+    if (player_sum === 18) {
+      if (dealer_card >= 9 || dealer_card === 0) {
+        return "Hit";
+      }
+    }
+
+    return "Stand";
+  }
+
+  // Hard hand
+  if (player_sum === 17) {
+    return "Stand";
+  }
+
+  if (dealer_card >= 7 || dealer_card === 0) {
+    return "Hit";
+  }
+
+  if (player_sum === 12 && dealer_card <= 3) {
+    return "Hit";
+  }
+
+  return "Stand";  
+}
+
+function ask_cpu_decision() {
+  const decision = get_cpu_decision(player_cards, dealer_cards);
+
+  const decision_text = document.getElementById('cpu-decision');
+
+  decision_text.innerHTML = `CPU Decision: ${decision}`;
+}
+
 function draw_card() {
   return Math.floor(Math.random() * cards_value.length);
 }
@@ -62,7 +128,9 @@ function deal_cards() {
   bet_text.innerHTML = `Bet: ${bet}$`;
 
   const deal_button = document.getElementById('deal-button');
+  const ask_cpu_button = document.getElementById('cpu-decision-button');
 
+  ask_cpu_button.style.display = "inline-block";
   deal_button.style.display = "none";
 
   const dealer_hand = document.getElementById('dealer-hand');
@@ -98,6 +166,9 @@ function deal_cards() {
 function hit() {
   const player_hand = document.getElementById('player-hand');
   const player_text = document.getElementById('player');
+  const decision_text = document.getElementById('cpu-decision');
+
+  decision_text.innerHTML = "";
 
   player_cards.push(draw_card());
   player_hand.innerHTML += `<p>${cards_display[player_cards[player_cards.length - 1]]}</p>`;
@@ -116,6 +187,9 @@ function hit() {
 function stand() {
   const dealer_hand = document.getElementById('dealer-hand');
   const dealer_text = document.getElementById('dealer');
+  const decision_text = document.getElementById('cpu-decision');
+
+  decision_text.innerHTML = "";
 
   dealer_hand.innerHTML = "";
 
@@ -152,10 +226,14 @@ function end_game(text) {
   const stand_button = document.getElementById('stand-button');
   const next_button = document.getElementById('next-hand-button');
   const bet_text = document.getElementById('bet-amount');
+  const ask_cpu_button = document.getElementById('cpu-decision-button');
+  const decision_text = document.getElementById('cpu-decision');
 
+  decision_text.innerHTML = "";
   hit_button.style.display = "none";
   stand_button.style.display = "none";
   next_button.style.display = "inline-block";
+  ask_cpu_button.style.display = "none";
 
   bet_text.innerHTML = text;
 }

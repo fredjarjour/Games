@@ -7,7 +7,7 @@ This is a collection of games I coded, along with some algorithm with it that ca
 - Tic Tac Toe
 - Connect 4
 - 2048
-- Blackjack (Missing Algorithm)
+- Blackjack
 
 ## Future Game Ideas/Suggestions
 
