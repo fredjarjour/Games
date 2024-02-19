@@ -282,7 +282,7 @@ function next_hand() {
 
   bet_input.style.display = "inline-block";
   bet_input.value = Math.max(Math.floor(balance/10), 1);
-  bet_input.max = balance;
+  bet_input.setAttribute("max", `${balance}`);
   bet_text.innerHTML = "Bet Amount: ";
 
   deal_button.style.display = "inline-block";
@@ -296,4 +296,11 @@ function next_hand() {
 
 function restart_game() {
   location.reload();
+}
+
+function input_change() {
+  const bet_input = document.getElementById('bet');
+  const bet_text = document.getElementById('bet-amount');
+
+  bet_text.innerHTML = `Bet: ${bet_input.value}$`;
 }
