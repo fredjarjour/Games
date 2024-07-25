@@ -156,6 +156,16 @@ function deal_cards() {
   player_text.innerHTML = `Player: ${display_hand(player_cards)}`;
   dealer_text.innerHTML = `Dealer: ?`;
 
+  if (calculate_hand(player_cards) == 21) {
+    win_game();
+    return;
+  }
+
+  if (calculate_hand(dealer_cards) == 21) {
+    stand();
+    return;
+  }
+
   const hit_button = document.getElementById('hit-button');
   const stand_button = document.getElementById('stand-button');
 
