@@ -172,55 +172,39 @@ function naiveSearch(board, turn, castlingRights = window.castlingRights, enPass
         for (const move of moves) {
             let boardCopy = fastBoardCopy(board);
             window.makeMove(boardCopy, move.fromRow, move.fromCol, move.toRow, move.toCol, castlingRights, enPassantTarget);
-            // Limit duck moves: only adjacent to pieces, or fallback to first N empty squares
-            let emptySquares = [];
-            for (let r = 0; r < 8; r++) {
-                for (let c = 0; c < 8; c++) {
-                    if (!boardCopy[r][c]) emptySquares.push([r, c]);
-                }
-            }
-            let duckSquares = [];
-            // Find all empty squares adjacent to any piece
-            for (const [r, c] of emptySquares) {
-                let adjacent = false;
-                for (let dr = -1; dr <= 1; dr++) {
-                    for (let dc = -1; dc <= 1; dc++) {
-                        if (dr === 0 && dc === 0) continue;
-                        let nr = r + dr, nc = c + dc;
-                        if (nr >= 0 && nr < 8 && nc >= 0 && nc < 8 && boardCopy[nr][nc] && boardCopy[nr][nc] !== 'duck') {
-                            adjacent = true;
+            // Allow any duck move that doesn't leave the king in check and is relevant (blocks an opponent piece)
+            for (let duckRow = 0; duckRow < 8; duckRow++) {
+                for (let duckCol = 0; duckCol < 8; duckCol++) {
+                    if (boardCopy[duckRow][duckCol]) continue; // Only empty squares
+                    let boardDuck = fastBoardCopy(boardCopy);
+                    // Remove any existing duck
+                    for (let r = 0; r < 8; r++) {
+                        for (let c = 0; c < 8; c++) {
+                            if (boardDuck[r][c] === 'duck') boardDuck[r][c] = null;
                         }
                     }
-                }
-                if (adjacent) duckSquares.push([r, c]);
-            }
-            // If none found, fallback to first N empty squares
-            const N = 4;
-            if (duckSquares.length === 0) duckSquares = emptySquares.slice(0, N);
-            if (duckSquares.length === 0) continue;
-            for (const [duckRow, duckCol] of duckSquares) {
-                let boardDuck = fastBoardCopy(boardCopy);
-                for (let r = 0; r < 8; r++) {
-                    for (let c = 0; c < 8; c++) {
-                        if (boardDuck[r][c] === 'duck') boardDuck[r][c] = null;
+                    boardDuck[duckRow][duckCol] = 'duck';
+                    // Only consider if relevant (blocks an opponent piece)
+                    if (!window.isDuckMoveRelevant(boardCopy, duckRow, duckCol)) continue;
+                    // Only consider if after duck move, own king is not in check
+                    const myColor = turn;
+                    if (window.isKingInCheck(boardDuck, myColor)) continue;
+                    let evalScore = search(boardDuck, turn === 'W' ? 'B' : 'W', castlingRights, enPassantTarget, d - 1, alpha, beta);
+                    if (turn === 'W') {
+                        if (evalScore > bestEval) {
+                            bestEval = evalScore;
+                            bestMove = { move, duckRow, duckCol };
+                        }
+                        alpha = Math.max(alpha, bestEval);
+                        if (beta <= alpha) break;
+                    } else {
+                        if (evalScore < bestEval) {
+                            bestEval = evalScore;
+                            bestMove = { move, duckRow, duckCol };
+                        }
+                        beta = Math.min(beta, bestEval);
+                        if (beta <= alpha) break;
                     }
-                }
-                boardDuck[duckRow][duckCol] = 'duck';
-                let evalScore = search(boardDuck, turn === 'W' ? 'B' : 'W', castlingRights, enPassantTarget, d - 1, alpha, beta);
-                if (turn === 'W') {
-                    if (evalScore > bestEval) {
-                        bestEval = evalScore;
-                        bestMove = { move, duckRow, duckCol };
-                    }
-                    alpha = Math.max(alpha, bestEval);
-                    if (beta <= alpha) break;
-                } else {
-                    if (evalScore < bestEval) {
-                        bestEval = evalScore;
-                        bestMove = { move, duckRow, duckCol };
-                    }
-                    beta = Math.min(beta, bestEval);
-                    if (beta <= alpha) break;
                 }
             }
         }
