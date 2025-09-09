@@ -1,0 +1,48 @@
+#shop, #battle {
+    /* border */
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 2%;
+}
+
+#shop_items {
+    /* display all sub divs in the same line */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+#shop_units, #shop_equipments {
+    padding: 2%;
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.menubtn {
+    /* button style */
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    /* add margins to the sides */
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#endbtn {
+    /* red that goes well with the green above */
+    background-color: #f44336;
+    /* align to the right */
+    float: right;
+}

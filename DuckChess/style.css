@@ -1,0 +1,63 @@
+
+#promotion-select {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+	padding: 16px 32px;
+	background: #f8f8f8;
+	border-radius: 12px;
+	box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+	font-size: 1.2em;
+}
+
+#promotion-select select {
+	padding: 6px 12px;
+	font-size: 1em;
+	border-radius: 4px;
+	border: 1px solid #b58863;
+	background: #fffbe6;
+}
+
+#promotion-select button {
+	padding: 6px 16px;
+	font-size: 1em;
+	border-radius: 4px;
+	border: none;
+	background: #b58863;
+	color: #fff;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+#promotion-select button:hover {
+	background: #8c6842;
+}
+
+#chessboard {
+	display: grid;
+	grid-template-columns: repeat(8, 100px);
+	grid-template-rows: repeat(8, 100px);
+	gap: 0;
+	border: 2px solid #333;
+	width: 800px;
+	height: 800px;
+	margin: 40px auto;
+}
+
+.square {
+	width: 100px;
+	height: 100px;
+	box-sizing: border-box;
+}
+
+.light {
+	background: #f0d9b5;
+}
+.dark {
+	background: #b58863;
+}

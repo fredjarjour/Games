@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Connect 4</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+	<script src="script.js"></script>
+	<a href="../index.html">Back to Games</a>
+	<h1>Current Game</h1>
+	<table>
+	  <tr>
+	    <td class="grid" id="g0"></td>
+	    <td class="grid" id="g1"></td>
+	    <td class="grid" id="g2"></td>
+		<td class="grid" id="g3"></td>
+		<td class="grid" id="g4"></td>
+		<td class="grid" id="g5"></td>
+		<td class="grid" id="g6"></td>
+		<td class="grid" id="g7"></td>
+	  </tr>
+	  <tr>
+	    <td class="grid" id="g8"></td>
+	    <td class="grid" id="g9"></td>
+		<td class="grid" id="g10"></td>
+		<td class="grid" id="g11"></td>
+		<td class="grid" id="g12"></td>
+		<td class="grid" id="g13"></td>
+		<td class="grid" id="g14"></td>
+		<td class="grid" id="g15"></td>
+	  </tr>
+	  <tr>
+	    <td class="grid" id="g16"></td>
+		<td class="grid" id="g17"></td>
+		<td class="grid" id="g18"></td>
+		<td class="grid" id="g19"></td>
+		<td class="grid" id="g20"></td>
+		<td class="grid" id="g21"></td>
+		<td class="grid" id="g22"></td>
+		<td class="grid" id="g23"></td>
+	  </tr>
+	  <tr>
+		<td class="grid" id="g24"></td>
+		<td class="grid" id="g25"></td>
+		<td class="grid" id="g26"></td>
+		<td class="grid" id="g27"></td>
+		<td class="grid" id="g28"></td>
+		<td class="grid" id="g29"></td>
+		<td class="grid" id="g30"></td>
+		<td class="grid" id="g31"></td>
+	  </tr>
+	  <tr>
+		<td class="grid" id="g32"></td>
+		<td class="grid" id="g33"></td>
+		<td class="grid" id="g34"></td>
+		<td class="grid" id="g35"></td>
+		<td class="grid" id="g36"></td>
+		<td class="grid" id="g37"></td>
+		<td class="grid" id="g38"></td>
+		<td class="grid" id="g39"></td>
+	  </tr>
+	  <tr>
+		<td class="grid" id="g40"></td>
+		<td class="grid" id="g41"></td>
+		<td class="grid" id="g42"></td>
+		<td class="grid" id="g43"></td>
+		<td class="grid" id="g44"></td>
+		<td class="grid" id="g45"></td>
+		<td class="grid" id="g46"></td>
+		<td class="grid" id="g47"></td>
+	  </tr>
+	  <tr>
+		<td class="grid" id="g48"></td>
+		<td class="grid" id="g49"></td>
+		<td class="grid" id="g50"></td>
+		<td class="grid" id="g51"></td>
+		<td class="grid" id="g52"></td>
+		<td class="grid" id="g53"></td>
+		<td class="grid" id="g54"></td>
+		<td class="grid" id="g55"></td>
+	  </tr>
+	  <tr>
+		<td class="grid" id="g56"></td>
+		<td class="grid" id="g57"></td>
+		<td class="grid" id="g58"></td>
+		<td class="grid" id="g59"></td>
+		<td class="grid" id="g60"></td>
+		<td class="grid" id="g61"></td>
+		<td class="grid" id="g62"></td>
+		<td class="grid" id="g63"></td>
+	  </tr>
+	</table>
+
+	<h1 id="result"></h1>
+
+	<h2 id="prediction"></h2>
+
+	<label for="depth">Depth (between 1 and 10):</label>
+	<input type="number" id="depth" name="depth" min="1" max="10" value="5" oninput="changeDepth()">
+	
+	<br>Always Max Depth: <input type="checkbox" id="maxDepth" name="maxDepth" onclick="clickMaxDepth()">
+
+	<button id="reset" class="utilButton" onclick="reset()">Play Again</button>
+  </body>
+</html>
